@@ -1,0 +1,24 @@
+#3.1 Write a program to prompt the user for hours and rate per hour using raw_input to compute gross pay.
+# Award time-and-a-half for the hourly rate for all hours worked above 40 hours. Use 45 hours and a rate of 10.50 per hour to test the program
+# (the pay should be 498.75). You should use raw_input to read a string and float() to convert the string to a number. Do not worry about error checking the
+# user input - assume the user types numbers properly.
+# Now use error checking using try except
+
+try:
+    inp1 = raw_input("Enter Hours:")
+    hours = float(inp1)
+    inp2 = raw_input("Enter Rate per Hour:")
+    rate = float(inp2)
+
+except:
+    print "Error, please enter numeric input"
+    quit()
+
+#print rate, hours
+
+if hours <= 40 :
+    pay = rate * hours
+
+else:
+    pay = rate * 40 + ( rate * 1.5 * ( hours - 40) )
+    print "Your Pay is:", pay
