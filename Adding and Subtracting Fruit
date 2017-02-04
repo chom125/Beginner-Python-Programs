@@ -34,41 +34,41 @@ def addnewfruit(f):
 	f.append(new)
 	print(f)
 	return f
-
+#function to pick a number that will generate a fruit name in the ditionary.
 def pickanumber(f):
 	num = int(input('Please enter the numeric number for the fruit you would like\n'))
 	print('The number you selected is ' + str(num) + ' and the item you selected is: ' + f[num-1])
-
+#function to add a piece of user generated fruit.
 def addfruittobeginningwithplus(f):
 	new = input('Please add a fruit to the beginning of the list\n')
 	f = [new] + l
 	print(f)
 	return f
-
+#function to add a piece of fruit at the begging of the dictionary.
 def addfruittobeginningwithinsert(f):
 	new = input('Please add another fruit to the beginning of the list\n')
 	f.insert(0, new)
 	print(f)
 	return f
-
+#function to print the fruit at the begining of the ditionary.
 def printfruitthatstartswithP(l):
 	print('Printing fruits that start with \'P\'')
 	for fruit in f:
 		if fruit[0] == 'P':
 			print(fruit)
-
+#trim the furt in the list function.
 def trimlastfruit(f):
 	print('Trimming the last fruit from the list:\n')
 	f = f[:-f]
 	print(f)
 	return f
-
+#function for the user to delete the fruit that they type in from keyboard.
 def userdelfruit(f):
 	rem = input('Please type the name of the fruit you wish to delete:\n')
 	f.remove(rem)
 	print(f)
 	return f
-
+#add tx pieces of fruit. 
 def userdelfruitmulti(f):
 	f = f*2
 	print('Fruits have Mutated, fruits now have 2x fruits!')
