@@ -1,0 +1,103 @@
+# coding=utf-8
+#AUTHOR: Lawrence Woods
+#FILE: Mailroom 1
+#NAME: mailroom.py
+#DATE: 6 / 2 / 17
+
+# This program uses basic data types and logic for a full program
+# I. The program does the following:
+# (1) It should have a data structure that holds a list of your donors and a
+#     history of the amounts they have donated. This structure should be populated
+#     at first with at least five donors, with between 1 and 3 donations each.
+#
+# (2) The script should prompt the user (you) to choose from a menu of 3 actions:
+#    a.  'Send a Thank You' or
+#    b.  'Create a Report' or
+#    c.  'quit')
+
+# III. Sending a Thank You
+# (1) If the user (you) selects 'Send a Thank You', prompt for a Full Name.
+# (2) If the user types 'list', show them a list of the donor names and re-prompt.
+# (3) If the user types a name not in the list, add that name to the data structure and use it.
+# (4) If the user types a name in the list, use it.
+
+# IV. Once a name has been selected, prompt for a donation amount.
+#  (1) Turn the amount into a number – it is OK at this point for the program to crash
+#  (2) if someone types a bogus amount.
+#  (3) Once an amount has been given, add that amount to the donation history of the selected user.
+#  (4) Finally, use string formatting to compose an email thanking the donor for their generous donation. Print the email to the terminal and return to the original prompt.
+#  (5) It is fine to forget new donors once the script quits running.
+
+#  V. Creating a Report¶
+#  (1) If the user (you) selected ‘Create a Report’ print a list of your donors, sorted by total historical donation amount.
+#      Include Donor Name, total donated, number of donations and average donation amount as values in each row. You do not need to print out all their donations, just the summary info.
+#  (2) Using string formatting, format the output rows as nicely as possible. The end result should be tabular (values in each column should align with those above and below)
+#  (3) After printing this report, return to the original prompt.
+#  (4) At any point, the user should be able to quit their current task and return to the original prompt.
+#  (5) From the original prompt, the user should be able to quit the script cleanly
+
+#  VI. Your report should look somethign like this:
+    #Donor Name                | Total Given | Num Gifts | Average Gift
+    #------------------------------------------------------------------
+    #William Gates, III         $  653784.49           2  $   326892.24
+    #Mark Zuckerberg            $   16396.10           3  $     5465.37
+    #eff Bezos                 $     877.33           1  $      877.33
+    #Paul Allen                 $     708.42           3  $      236.14
+
+
+def initialize_data():
+    pass
+
+#This function initializes the data and with the data
+# the program returns the dictionary.
+    data = {}  # creating dictonary
+    data["William Gates, III"] = [326892.24, 326892.24]
+    data["Mark Zuckerberg"] = [5465.37, 5465.37, 5465.37]
+    data["Jeff Bezos "] = [877.33]
+    data["Paul Allen"] = [236.14, 236.14, 236.14]
+    data["ravi"] = [777777.67, 888888.87]
+    return data
+
+#This function prints the menu.
+def menu():
+    print("1. Send a Thank You")
+    print("2. Create a Report ")
+    print("3. Quit")
+
+#This function creates the report from a dictionary.
+def create_report(data_dict):
+#formating print output. 0 string 20 spaces log etc.
+    print('{0:20}{1:20}{2:20}{3:20}'.format("Donor Name", "Total Given", "Num Gifts", "Average Gifts"))
+#Defining the donor's contribution amount, length and type.
+    for donor in data_dict:
+        print("{0:20}  ${1:<20.2f}  {2:<20d} ${3:<20.2f}".format(donor, sum(data_dict[donor]), len(data_dict[donor]),
+          sum(data_dict[donor]) / len(data_dict[donor])))
+print()
+
+#if statment continuing to keep the menu running or not.
+if __name__ == '__main__':
+    data = initialize_data()
+#keep initializing the menu while true.
+while True:
+    menu()
+    choice = int(input("Enter your Choice:"))
+    if choice == 1:
+        name = input("Enter Full Name:")
+        if name == "list":
+            print(data.keys())
+            name = input("Enter Full Name:")
+            if name not in data.keys():
+                data[name] = []
+#capturing donation amount.
+            donation_amount = float(input("Enter the Donation Amount:"))
+            data[name].append(donation_amount)
+            print("Dear", name + ",")
+            print("Thank you very much for your donation ")
+    elif choice == 2:
+        create_report(data)
+#quit program.
+    elif choice == 3:
+        break
+#numbers 1 through 3 must be entered. 
+    else:
+        print("Enter valid Input")
